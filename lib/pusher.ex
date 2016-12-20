@@ -41,7 +41,7 @@ defmodule Pusher do
   end
 
   def write_total(chan_result) do
-    total = Enum.reduce(chan_result, 0, fn(x, acc) -> (x[:count]) end)
+    total = Enum.reduce(chan_result, 0, fn(x, acc) -> (x[:count] + acc) end)
     serie = %FSChannelsSeries{}
     serie = %{ serie | fields: %{ serie.fields | value: total }}
 
